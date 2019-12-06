@@ -7,7 +7,7 @@ import View from './components/View';
 import withApollo from './withApollo';
 
 export const apolloClient = new ApolloClient({
-  uri: 'http://localhost:4000'
+  uri: 'http://localhost:4000/graphql'
 });
 
 export interface AppProps {}

@@ -16,15 +16,13 @@
     "test:web": "reactant test web"
   },
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.3",
     "@react-native-community/async-storage": "^1.6.3",
     "@reactant/expo": "^0.0.238",
     "@reactant/redux": "^0.0.238",
     "@reactant/router": "^0.0.238",
     "@reactant/web": "^0.0.238",
-    "apollo-cache-inmemory": "^1.6.3",
-    "apollo-cache-redux": "^0.1.2",
-    "apollo-client": "^2.6.4",
-    "apollo-link-http": "^1.5.16",
+    "apollo-boost": "^0.4.4",
     "connected-react-router": "^6.6.1",
     "core-js": "^3.3.6",
     "graphql-tag": "^2.10.1",

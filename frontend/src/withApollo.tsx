@@ -1,26 +1,15 @@
 import ApolloClient from 'apollo-client';
-import PropTypes from 'prop-types';
-import { Component, ReactNode } from 'react';
+import React, { Component, FC } from 'react';
+import { ApolloProvider } from '@apollo/react-hooks';
 
-export interface ApolloProviderProps {
-  children?: ReactNode;
-  apolloClient: ApolloClient<any>;
+export interface UnknownProps {
+  [key: string]: any;
 }
 
-class ApolloProvider extends Component<ApolloProviderProps> {
-  static childContextTypes = {
-    apolloClient: PropTypes.object.isRequired
-  };
-
-  getChildContext() {
-    return {
-      apolloClient: this.props.apolloClient
-    };
-  }
-
-  render() {
-    return this.props.children;
-  }
+export default function withApollo(client: ApolloClient<any>) {
+  return (App: FC | typeof Component): FC => (props: UnknownProps) => (
+    <ApolloProvider client={client}>
+      <App {...props} />
+    </ApolloProvider>
+  );
 }
-
-export default ApolloProvider;

@@ -4,20 +4,21 @@ import { ApolloServer } from 'apollo-server-express';
 import { createContext } from './context';
 import { createSchema } from './schema';
 
-const app = express();
-
 export const config = {
+  debug: true,
   port: 4000
 };
 
-app.get('/', (_req: Request, res: Response) => {
-  return res.redirect('/graphql');
-});
+export const app = express();
+
+export let server: ApolloServer;
+
+app.get('/', (_req: Request, res: Response) => res.redirect('/graphql'));
 
 (async () => {
-  const server = new ApolloServer({
+  server = new ApolloServer({
     schema: await createSchema(),
-    playground: true,
+    playground: config.debug,
     context: createContext
   });
   server.applyMiddleware({ app });
